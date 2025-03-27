@@ -1,0 +1,4 @@
+name: LegendsClaims
+version: '0.1'
+main: fr.xania.legendsClaims.LegendsClaims
+api-version: '1.21'
