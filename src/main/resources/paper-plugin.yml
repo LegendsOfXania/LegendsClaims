@@ -2,3 +2,13 @@ name: LegendsClaims
 version: '0.1'
 main: fr.xania.legendsClaims.LegendsClaims
 api-version: '1.21'
+commands:
+  legendsclaims:
+    description: Main command for LegendsClaims
+    usage: /<command> [args]
+    aliases:
+    - lc
+    - lclaim
+    - lclaims
+    - claims
+    - claim
