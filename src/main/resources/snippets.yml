@@ -1,0 +1,15 @@
+#
+# Legends Claim language configuration file.
+#
+
+
+Plugin:
+  Prefix: "<gradient:#9863E7:#E43A96>ʟᴇɢᴇɴᴅѕᴄʟᴀɪᴍѕ</gradient> <dark_gray>»</dark_gray>"
+  Reloading: "<#E43A96>Reloading configuration...</#E43A96>"
+  SnippetsReloaded: "<#E43A96>Configuration reloaded. <white>(snippets.yml)</white></#E43A96>"
+  ConfigReloaded: "<#E43A96>Configuration reloaded. <white>(config.yml)</white></#E43A96>"
+  AllReloaded: "<#E43A96>Configuration reloaded.</#E43A96>"
+
+Error:
+  NoPermission: "<red>Sorry, you don't have permission to do that.</red>"
+  NotPlayer: "<red>Sorry, you must be a player to do that.</red>"

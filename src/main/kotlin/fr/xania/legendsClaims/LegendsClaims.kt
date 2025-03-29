@@ -1,57 +1,50 @@
 package fr.xania.legendsClaims
 
-import fr.xania.legendsClaims.manager.commands.LegendsClaimsCommand
+import dev.jorel.commandapi.CommandAPI
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.plugin.java.JavaPlugin
 import java.io.File
 
 class LegendsClaims : JavaPlugin() {
 
-    private lateinit var langConfig: YamlConfiguration
+    private lateinit var snippetsConfig: YamlConfiguration
 
     override fun onEnable() {
         saveDefaultConfig()
+
         loadConfig()
-        loadLang()
-        loadCommands()
-        logger.info("LegendsClaims enabled")
+        logger.info("Language configuration loaded.")
+
+        loadSnippets()
+        logger.info("Language configuration reloaded.")
+
+        logger.info("LegendsClaims enabled.")
         logger.warning("This plugin is a work in progress and is not yet functional.")
     }
 
     override fun onDisable() {
+        CommandAPI.onDisable()
         logger.info("LegendsClaims disabled.")
     }
 
-    private fun loadCommands() {
-        LegendsClaimsCommand(this)
-    }
-
     private fun loadConfig() {
-        reloadConfig()
-        val config = config
         logger.info("Configuration loaded.")
     }
 
-    private fun loadLang() {
-        val langFile = File(dataFolder, "snippet.yml")
-        if (!langFile.exists()) {
-            saveResource("snippet.yml", false)
+    private fun loadSnippets() {
+        val snippetsFile = File(dataFolder, "snippets.yml")
+        if (!snippetsFile.exists()) {
+            saveResource("snippets.yml", false)
         }
-        langConfig = YamlConfiguration.loadConfiguration(langFile)
-        logger.info("Language configuration loaded.")
+        snippetsConfig = YamlConfiguration.loadConfiguration(snippetsFile)
     }
 
-    fun reloadLang() {
-        val langFile = File(dataFolder, "snippet.yml")
-        if (langFile.exists()) {
-            langConfig = YamlConfiguration.loadConfiguration(langFile)
-            logger.info("Language configuration reloaded.")
-        } else {
-            logger.warning("Language file snippet.yml does not exist.")
-        }
+    fun reloadSnippets() {
+        val snippetsFile = File(dataFolder, "snippets.yml")
+        if (snippetsFile.exists()) { snippetsConfig = YamlConfiguration.loadConfiguration(snippetsFile) }
     }
 
-    fun getLangString(key: String): String? {
-        return langConfig.getString(key)
+    fun getSnippetsString(key: String): String {
+        return snippetsConfig.getString(key) ?: ""
     }
 }

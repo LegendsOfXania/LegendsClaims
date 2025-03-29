@@ -1,0 +1,5 @@
+name: LegendsClaims
+version: '0.1'
+main: fr.xania.legendsClaims.LegendsClaims
+author: Xaya
+api-version: '1.21'
